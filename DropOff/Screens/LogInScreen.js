@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Switch } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Switch, Image, TouchableOpacity } from 'react-native';
+import logo from '../img/logoDropOff.png';
+import { LIGHT_GRAY, ORANGE } from '../colors/colors';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState('');
@@ -7,21 +9,18 @@ const LoginScreen = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const handleLogin = () => {
-    // Aquí puedes implementar la lógica para iniciar sesión
     console.log('Iniciar sesión con:', email, password);
   };
 
   const handleRegister = () => {
-    // Aquí puedes implementar la lógica para registrar un nuevo usuario
     console.log('Registrarse con:', email, password);
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleBlack}>Drop</Text>
-        <Text style={styles.titleYellow}>Off</Text>
-      </View>
+      {/* Render the logo directly without a separate Header component */}
+      <Image style={styles.logo} source={logo} />
+
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
@@ -36,7 +35,9 @@ const LoginScreen = () => {
         onChangeText={setPassword}
       />
       {isLogin ? (
-        <Button title="Iniciar Sesión" onPress={handleLogin} />
+        <View style={styles.loginButton}>
+          <Button title="Iniciar Sesión" onPress={handleLogin} color="white" /> 
+        </View>
       ) : (
         <>
           <TextInput
@@ -52,12 +53,14 @@ const LoginScreen = () => {
             style={styles.input}
             placeholder="Teléfono"
           />
-          <Button title="Registrarse" onPress={handleRegister} />
+          <Button title="Registrarse" onPress={handleRegister} color="#00FF00" /> 
         </>
       )}
       <View style={styles.switchContainer}>
-        <Text>¿No tienes una cuenta?</Text>
-        <Switch value={!isLogin} onValueChange={setIsLogin} />
+        <Text style={styles.blackText}>¿No tienes una cuenta?</Text>
+        <TouchableOpacity>
+          <Text style={styles.orangeText}>Crea una</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -66,38 +69,42 @@ const LoginScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#F5F5F5', // Fondo gris claro
+    backgroundColor: LIGHT_GRAY, // Light gray background
   },
-  titleContainer: {
-    flexDirection: 'row',
+  logo: {
+    width: 200, // Adjust the width as needed
+    height: 200, // Adjust the height as needed
     marginBottom: 20,
   },
-  titleBlack: {
-    color: 'black',
-    fontWeight: 'bold', // Letras en negrita
-    fontSize: 24,
-  },
-  titleYellow: {
-    color: '#FFD700', // Amarillo oscuro
-    fontWeight: 'bold', // Letras en negrita
-    fontSize: 24,
-  },
   input: {
-    width: '100%',
+    width: '85%',
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+    backgroundColor:'white',
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: 20,
     paddingHorizontal: 10,
+  },
+  loginButton: {
+    backgroundColor: ORANGE, // Background color for login button
+    width: '82%', // Set width to 100%
+    marginBottom: 10, // Add margin bottom
+    marginTop: 50,
+    borderRadius:50,
   },
   switchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
+  },
+  blackText: {
+    color: 'black', // Color negro
+    marginRight: 5, // Espacio entre los textos
+  },
+  orangeText: {
+    color: ORANGE, // Color naranja
+    fontWeight: 'bold',
   },
 });
 
