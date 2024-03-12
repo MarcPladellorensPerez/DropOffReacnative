@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Switch, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import logo from '../img/logoDropOff.png';
 import { LIGHT_GRAY, ORANGE } from '../colors/colors';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true);
-
+  
   const handleLogin = () => {
     console.log('Iniciar sesión con:', email, password);
-  };
-
-  const handleRegister = () => {
-    console.log('Registrarse con:', email, password);
   };
 
   return (
@@ -34,31 +29,14 @@ const LoginScreen = () => {
         value={password}
         onChangeText={setPassword}
       />
-      {isLogin ? (
-        <View style={styles.loginButton}>
-          <Button title="Iniciar Sesión" onPress={handleLogin} color="white" /> 
-        </View>
-      ) : (
-        <>
-          <TextInput
-            style={styles.input}
-            placeholder="Repetir Contraseña"
-            secureTextEntry
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Nombre"
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Teléfono"
-          />
-          <Button title="Registrarse" onPress={handleRegister} color="#00FF00" /> 
-        </>
-      )}
-      <View style={styles.switchContainer}>
+
+      <View style={styles.loginButton}>
+        <Button title="Iniciar Sesión" onPress={handleLogin} color="white" /> 
+      </View>
+
+      <View style={styles.registerContainer}>
         <Text style={styles.blackText}>¿No tienes una cuenta?</Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Register')}>
           <Text style={styles.orangeText}>Crea una</Text>
         </TouchableOpacity>
       </View>
@@ -93,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     borderRadius:50,
   },
-  switchContainer: {
+  registerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
