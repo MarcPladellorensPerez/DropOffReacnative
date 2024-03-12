@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Switch } from 'react-native';
 
-const LoginScreen = ({ navigation }) => {
+const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  const handleLogin = () => {
-    // Aquí puedes implementar la lógica para iniciar sesión
-    console.log('Iniciar sesión con:', email, password);
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const handleRegister = () => {
+    // Aquí puedes implementar la lógica para registrar un nuevo usuario
+    console.log('Registrarse con:', email, password, repeatPassword, name, phone);
   };
 
   return (
@@ -29,10 +32,29 @@ const LoginScreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
       />
-      <Button title="Iniciar Sesión" onPress={handleLogin} />
+      <TextInput
+        style={styles.input}
+        placeholder="Repetir Contraseña"
+        secureTextEntry
+        value={repeatPassword}
+        onChangeText={setRepeatPassword}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Nombre"
+        value={name}
+        onChangeText={setName}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Teléfono"
+        value={phone}
+        onChangeText={setPhone}
+      />
+      <Button title={ "Registrarse" } onPress={ handleRegister } />
       <View style={styles.registerContainer}>
-        <Text>¿No tienes una cuenta?</Text>
-          <Button title="Crear cuenta" onPress={() => navigation.navigate('Register')} />
+        <Text>¿Ya tienes una cuenta?</Text>
+          <Button title="Iniciar sesion" onPress={() => navigation.navigate('Login')} />
       </View>
     </View>
   );
@@ -76,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RegisterScreen;
