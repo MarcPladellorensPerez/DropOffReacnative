@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import logo from '../img/logoDropOff.png';
 import { LIGHT_GRAY, ORANGE } from '../colors/colors';
+import Header from '../components/Header';
+import CustomSwitchSelector from '../components/CustomSwitchSelector'; // Importa el componente CustomSwitchSelector
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [isBusinessUser, setIsBusinessUser] = useState(true); // Estado para controlar si el usuario es de negocio o nuevo
+
   const handleLogin = () => {
-    console.log('Iniciar sesión con:', email, password);
+    console.log('EMAIL:', email,'PASSWORD: ',  password);
+    navigation.navigate('Home');
   };
 
   return (
     <View style={styles.container}>
       {/* Render the logo directly without a separate Header component */}
-      <Image style={styles.logo} source={logo} />
+      <Header imageSource={logo} />
+
+      {/* Utiliza el componente CustomSwitchSelector */}
+      <CustomSwitchSelector
+        onPress={(value) => setIsBusinessUser(value)}
+        isBusinessUser={isBusinessUser}
+      />
+
+      {!isBusinessUser && ( // Renderiza un nuevo campo de entrada solo si el usuario es de negocio
+        <TextInput
+          style={styles.input}
+          placeholder="Empresa"
+          // Aquí establece el valor y la función onChange según tus necesidades
+        />
+      )}
 
       <TextInput
         style={styles.input}
@@ -30,7 +48,7 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
       />
 
-      <View style={styles.loginButton}>
+      <View style={styles.loginButton} >
         <Button title="Iniciar Sesión" onPress={handleLogin} color="white" /> 
       </View>
 
@@ -51,16 +69,11 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: LIGHT_GRAY, // Light gray background
   },
-  logo: {
-    width: 200, // Adjust the width as needed
-    height: 200, // Adjust the height as needed
-    marginBottom: 20,
-  },
   input: {
     width: '85%',
     height: 40,
     backgroundColor:'white',
-    borderRadius: 5,
+    borderRadius: 50,
     marginBottom: 20,
     paddingHorizontal: 10,
   },
@@ -77,12 +90,14 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   blackText: {
-    color: 'black', // Color negro
-    marginRight: 5, // Espacio entre los textos
+    color: 'black', 
+    marginRight: 5, 
+    fontSize: 16,
   },
   orangeText: {
-    color: ORANGE, // Color naranja
+    color: ORANGE, 
     fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

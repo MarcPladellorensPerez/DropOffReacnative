@@ -15,15 +15,14 @@ const Header = ({ imageSource }) => {
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        height: '100%',
+        height: '22%',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#1B1212',
     },
     image: {
         width: '60%',
         height: '50%',
-        marginTop: '5%',
+
     },
 });
 
