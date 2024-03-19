@@ -14,6 +14,11 @@ const LoginScreen = ({ navigation }) => {
     console.log('EMAIL:', email,'PASSWORD: ',  password);
     navigation.navigate('Home');
   };
+  
+  const handleLoginWorker = () => {
+    console.log('EMAIL:', email,'PASSWORD: ',  password);
+    navigation.navigate('Routes');
+  };
 
   return (
     <View style={styles.container}>
@@ -48,9 +53,13 @@ const LoginScreen = ({ navigation }) => {
         onChangeText={setPassword}
       />
 
-      <View style={styles.loginButton} >
+      {isBusinessUser && (<View style={styles.loginButton} >
         <Button title="Iniciar Sesión" onPress={handleLogin} color="white" /> 
-      </View>
+      </View>)}
+      
+      {!isBusinessUser && (<View style={styles.loginButton} >
+        <Button title="Iniciar Sesión" onPress={handleLoginWorker} color="white" /> 
+      </View>)}
 
       <View style={styles.registerContainer}>
         <Text style={styles.blackText}>¿No tienes una cuenta?</Text>
