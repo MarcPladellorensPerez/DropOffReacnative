@@ -9,7 +9,7 @@ const CustomSwitchSelector = ({ onPress, isBusinessUser }) => {
       <SwitchSelector
         options={[
           { label: 'Usuario Business', value: true },
-          { label: 'Nuevo Usuario', value: false },
+          { label: 'Treballador', value: false },
         ]}
         initial={isBusinessUser ? 0 : 1}
         textColor={'black'}
