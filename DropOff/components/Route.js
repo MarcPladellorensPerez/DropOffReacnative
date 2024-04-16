@@ -26,12 +26,11 @@ const Route = ({ label }) => {
 const styles = StyleSheet.create({
   RouteContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
     backgroundColor: 'white',
     borderRadius: 8,
     marginBottom: 8,
     padding: 12,
-    width: '85%',
+    width: '100%',
   },
   checkboxContainer: {
     marginRight: 12,

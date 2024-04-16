@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, ScrollView, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import logo from '../img/logoDropOff.png';
 import { LIGHT_GRAY, ORANGE } from '../colors/colors';
 import Header from '../components/Header';
@@ -19,7 +19,24 @@ const RouteScreen = ({ navigation }) => {
       {/* Render the logo directly without a separate Header component */}
       <Header imageSource={logo} />
       
-      <Route label={"Route 1"}/>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+
+        <Route label={"Route 1"}/>
+        <Route label={"Route 2"}/>
+        <Route label={"Route 3"}/>
+        <Route label={"Route 4"}/>
+        <Route label={"Route 5"}/>
+        <Route label={"Route 6"}/>
+        <Route label={"Route 7"}/>
+        <Route label={"Route 8"}/>
+        <Route label={"Route 9"}/>
+        <Route label={"Route 10"}/>
+        <Route label={"Route 11"}/>
+        <Route label={"Route 12"}/>
+        <Route label={"Route 13"}/>
+        <Route label={"Route 14"}/>
+        <Route label={"Route 15"}/>
+      </ScrollView>
     </View>
   );
 };
@@ -27,8 +44,7 @@ const RouteScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    padding: 20,
+    paddingBottom: 60,
     backgroundColor: LIGHT_GRAY, // Light gray background
   },
   logo: {
@@ -66,6 +82,12 @@ const styles = StyleSheet.create({
     color: ORANGE, 
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    padding: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
