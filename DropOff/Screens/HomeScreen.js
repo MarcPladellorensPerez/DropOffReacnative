@@ -11,6 +11,10 @@ const HomeScreen = ({ navigation }) => {
 
   };
 
+  const navigateToRoutes = () => {
+    navigation.navigate('Routes')
+  }
+
   return (
     <View style={styles.container}>
       {/* Render the logo directly without a separate Header component */}
@@ -23,7 +27,7 @@ const HomeScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.Button} >
             <Text style={styles.textbtn}>Puntos de venta</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Button} >
+        <TouchableOpacity style={styles.Button} onPress={navigateToRoutes}>
             <Text style={styles.textbtn}>Rutas</Text>
         </TouchableOpacity>
 
