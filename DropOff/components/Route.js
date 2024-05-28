@@ -18,7 +18,7 @@ const Route = ({ label }) => {
           {isChecked ? '☑' : '▢'}
         </Text>
       </TouchableOpacity>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label, { textDecorationLine: isChecked ? 'line-through' : 'none'}]}>{label}</Text>
     </View>
   );
 };
