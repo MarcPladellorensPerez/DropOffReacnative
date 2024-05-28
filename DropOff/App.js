@@ -5,7 +5,7 @@ import LogInScreen from './Screens/LogInScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import HomeScreen from './Screens/HomeScreen';
 import SplashScreen from'./Screens/SplashScreen';
-
+import EmployeesScreen from './Screens/EmployeesScreen/';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -16,6 +16,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LogInScreen} options={{ animationEnabled: false, headerShown: false }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ animationEnabled: false, headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{  headerShown: false }} />
+        <Stack.Screen name="Employees" component={EmployeesScreen} options={{  headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

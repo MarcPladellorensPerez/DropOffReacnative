@@ -4,12 +4,11 @@ import logo from '../img/logoDropOff.png';
 import { LIGHT_GRAY, ORANGE } from '../colors/colors';
 import Header from '../components/Header';
 
-const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  const handleLogin = () => {
-    console.log('Iniciar sesión con:', email, password);
+const HomeScreen = ({ navigation }) => {
+
+  const navigateToEmployeesScreen = () => {
+    navigation.navigate('Employees');
+
   };
 
   return (
@@ -17,13 +16,14 @@ const LoginScreen = ({ navigation }) => {
       {/* Render the logo directly without a separate Header component */}
       <Header imageSource={logo} />
 
-        <TouchableOpacity style={styles.Button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.Button} onPress={navigateToEmployeesScreen}>
             <Text style={styles.textbtn}>Empleados</Text>
+            
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.Button} >
             <Text style={styles.textbtn}>Puntos de venta</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.Button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.Button} >
             <Text style={styles.textbtn}>Rutas</Text>
         </TouchableOpacity>
 
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default HomeScreen;
